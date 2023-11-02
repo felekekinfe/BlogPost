@@ -5,13 +5,13 @@ from .models import Post
 class HomeView(ListView):
     model=Post
 
-    template_name='/home/tor/djproj/blogpost/blogpost/templates/home.html'
+    template_name='home.html'
 
 class ArticleDetailView(DetailView):
     model=Post
-    template_name='/home/tor/djproj/blogpost/blogpost/templates/article_detail.html'
+    template_name='article_detail.html'
 
 class AddPostView(CreateView):
     model=Post
-    template_name='/home/tor/djproj/blogpost/blogpost/templates/addpost.html'
+    template_name='addpost.html'
     fields='__all__'

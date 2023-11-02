@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    addpost
+{% endblock title %}
+{% block content %}
+<h1>Add Post...</h1>
+<br/><br>
+<table>
+<form method='POST'>
+    {% csrf_token %}
+    {{form.as_table}}
+</table>
+    <button class="btn btn-secondary">add</button>
+
+</form>
+
+{% endblock content %}
