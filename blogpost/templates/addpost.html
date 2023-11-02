@@ -1,0 +1,9 @@
+
+
+<h1>Add Post...</h1>
+
+<form method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>add</button>
+</form>
