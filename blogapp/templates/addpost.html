@@ -7,12 +7,14 @@
 <h1>Add Post...</h1>
 <br/><br>
 <table>
+<div class="form-group">
 <form method='POST'>
     {% csrf_token %}
-    {{form.as_table}}
+    {{form.as_p}}
 </table>
     <button class="btn btn-secondary">add</button>
 
 </form>
+</div>
 
 {% endblock content %}
