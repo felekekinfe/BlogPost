@@ -22,4 +22,5 @@ class UpdatePostView(UpdateView):
     model=Post
     template_name='update_post.html'
     form_class=PostForm
+    #fields=('title','body')
 
