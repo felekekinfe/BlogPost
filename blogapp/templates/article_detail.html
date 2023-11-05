@@ -2,10 +2,19 @@
 {% block title %}{{post.title_tag}}{% endblock title%}
 
 {% block content %}
+
 <h1>{{post.title}}</h1>
-<small> By: {{post.author}}</small><br/>
-<hr>
 <br/>
+<small>posted at: {{post.post_date}}</small>
+<small> By: {{post.author}}</small><br/>
+
+{% if user.is_authenticated%}
+<a href="{% url 'updatepost' post.pk%}">edit</a>
+<a href="{% url 'deletepage' post.pk%}">delete</a>
+<hr>
+{% endif %}
+<br/>
+
 {{post.body}}
 
 <br/><br>

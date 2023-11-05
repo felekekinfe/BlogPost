@@ -4,6 +4,7 @@
 {% block title %}update post{% endblock title %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <h1>Uppdate Post...</h1>
 <br/><br>
 <table>
@@ -16,5 +17,7 @@
 
 </form>
 </div>
-
+{% else %}
+    you are scammer get out of my blog!!!
+{% endif %}
 {% endblock content %}
