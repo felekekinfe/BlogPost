@@ -10,14 +10,14 @@ class Post(models.Model):
     body=models.TextField()
     post_date=models.DateField(auto_now_add=True)
     catagory=models.CharField(max_length=10,choices=[("tech",'tech'),("soccer",'soccer'),("game",'game'),("movies",'movies')])
-
+    likes=models.ManyToManyField(User,related_name='blog_post')
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
         return reverse("home")
 
-class Lazy(models.Model):
+""" class Lazy(models.Model):
     nottitle=models.CharField(max_length=100)
     nottitle_tag=models.CharField(max_length=100)
     
@@ -25,6 +25,10 @@ class Lazy(models.Model):
         return self.nottitle
     
     def get_absolute_url(self):
-        return reverse("home")
+        return reverse("home") """
     
+
+
+
+
     

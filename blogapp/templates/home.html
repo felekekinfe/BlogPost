@@ -9,7 +9,7 @@
 <li><a href="{% url 'article_detail_view' post.pk%}"> {{post.title}}</a> -{{post.author}}
     <small>-{{post.post_date}}
         {% if user.is_authenticated %}
-            {% if post.authorrequest.user%}
+            {% if post.author == request.user %}
                 <a href="{% url 'updatepost' post.pk%}"> -(Edit)</a>
                 <a href="{% url 'deletepage' post.pk%}">(Delete)</a>
             {% endif %}

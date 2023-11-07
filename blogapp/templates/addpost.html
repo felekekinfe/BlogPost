@@ -17,7 +17,14 @@
     <button class="btn btn-secondary">add</button>
 
 </form>
+
+
 </div>
+
+<script>
+    var Username="{{request.user.id}}";
+    document.getElementById("Username").value=Username;
+</script>
 
 {% else %}
     you are scammer get out of my blog!!!

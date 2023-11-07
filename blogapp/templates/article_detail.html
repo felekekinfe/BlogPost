@@ -9,9 +9,11 @@
 <small> By: {{post.author}}</small><br/>
 
 {% if user.is_authenticated%}
-<a href="{% url 'updatepost' post.pk%}">edit</a>
-<a href="{% url 'deletepage' post.pk%}">delete</a>
-<hr>
+    {% if post.author == request.user %}
+        <a href="{% url 'updatepost' post.pk%}">edit</a>
+        <a href="{% url 'deletepage' post.pk%}">delete</a>
+        <hr>
+    {% endif %}
 {% endif %}
 <br/>
 
@@ -20,5 +22,15 @@
 <br/><br>
 
 <a href="{% url 'home' %}" class="btn btn-secondary">back</a>
+
+<br/><br/>
+<hr>
+<br/>
+
+<form method='post' action="{% url 'like_post' post.id %}">
+    {% csrf_token %}
+    <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-primary">Like</button>
+</form>
+
 {% endblock content %}
 
