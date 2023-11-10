@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'blogapp',
-    'bootstrap4',
     'members',
-    'crispy_forms'
+   
 ]
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
