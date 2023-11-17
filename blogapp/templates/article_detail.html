@@ -16,7 +16,10 @@
     {% endif %}
 {% endif %}
 <br/>
+{% if post.header_image %}
 
+    <img src="{{post.header_image.url}}"><br/><br/>
+{% endif %}
 {{post.body}}
 
 <br/><br>
@@ -25,12 +28,69 @@
 
 <br/><br/>
 <hr>
-<br/>
+<br/>  
 
-<form method='post' action="{% url 'like_post' post.id %}">
+<form method='post' action="{% url 'like_post' post.pk%}">
     {% csrf_token %}
-    <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-primary">Like</button>
+{% if user.is_authenticated %}
+    {% if liked %}
+
+        <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-danger btn-sm" >Unlike</button>
+    {% else %}
+
+        <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-danger btn-sm" >Like</button>
+
+    {% endif %}
+{% else %}
+    <small><a href="{% url 'login' %}">Login</a> Logged in first</small>
+{% endif %}
+
+
+
+
+
+{{total_likes}} Likes
 </form>
+<br></br>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <img src="{{post.author.profile.profile_pic.url}}" class="rounded-circle "width=100 height=100>
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{post.author.first_name}}
+            {{post.author.last_name}}
+          </h5>
+
+          <p class "small text-muted">
+
+          </p>
+
+          <p class "small text-muted">
+            {% if post.author.profile %}
+                <a href="{% url 'showprofile' post.author.profile.id%}">Profile Page</a>
+            {% endif %}
+            {% if  post.author.profile.website %}
+                <a href="{{post.author.profile.website}}"> Website</a>  |
+            {% endif %}
+            {% if  post.author.profile.facebook %}
+                <a href="{{post.author.profile.facebook}}">Facebook</a> | 
+           {% endif %}
+
+           {% if  post.author.profile.linkedin%}
+                <a href="{{post.author.profile.linkedin}}">Linkedin</a> |
+           {% endif %}
+          </p>
+          <p class="card-text">{{post.author.profile.bio}}</p>
+          <p class="card-text"><small class="text-muted">{{post.author.last_login}}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 {% endblock content %}
 

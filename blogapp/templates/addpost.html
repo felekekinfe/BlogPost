@@ -10,8 +10,9 @@
 <br/><br>
 <table>
 <div class="form-group">
-<form method='POST'>
+<form method='POST' enctype='multipart/form-data'>
     {% csrf_token %}
+    {{form.media}}
     {{form.as_p}}
 </table>
     <button class="btn btn-secondary">add</button>
@@ -22,7 +23,7 @@
 </div>
 
 <script>
-    var Username="{{request.user.id}}";
+    var Username="{{request.user.pk}}";
     document.getElementById("Username").value=Username;
 </script>
 

@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-729h^bp^6^ic3^y%b326tz07r=d!35*0%d1$*2hm04q*620ea6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'blogapp',
     'members',
+    'ckeditor',
    
 ]
 
@@ -121,6 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+MEDIA_URL='media/'
+
+MEDIA_ROOT=f'{BASE_DIR}/media'
+
+
 LOGIN_REDIRECT_URL='home'
 LOGOUT_REDIRECT_URL='home'
 

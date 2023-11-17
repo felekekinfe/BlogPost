@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>User Profile</h1>
+
+{% if userprofile.profile_pic%}
+    <img src="{{userprofile.profile_pic.url}}" class="card-img">
+{% else %}
+    <img src="{% static '{{profile.profile_pic.url}}' %}" class="card-img">
+
+{% endif %}
+
+</p>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'editprofilepic' userprofile.id%}">Edit Profile Picture</a>
+  </li>
+
+<p class="card-text">
+    {{userprofile.bio}}
+</p>
+</div>
+</div>
+</div>
+</div>
+<br/><br/>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
